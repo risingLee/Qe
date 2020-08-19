@@ -1,0 +1,20 @@
+<!--ttml-->
+<template name="staffName">
+  <button  bindtap="addScore"  hidden="{{!anser}}" style={{style}}>
+     {{anser}}
+  </button>
+</template>
+<view class="page-section">
+    <view class="page-section-title">
+      <text>{{quersition.title}}</text>
+    </view>
+    <view class="quersition-wrapper" style="flex-direction:column;">
+<template is="staffName" data="{{...quersition.staffA}}" ></template>
+<template is="staffName" data="{{...quersition.staffB}}" ></template>
+<template is="staffName" data="{{...quersition.staffC}}" ></template>
+<template is="staffName" data="{{...quersition.staffD}}" ></template>
+    </view>
+   <button class="btn-next"hidden="{{fs}}" bindtap="querstionChange" size="mini">{{te}}</button>
+ 
+  <button hidden="{{!fs}}" bindtap="exitFs" style="top: 100rpx;" size="mini">
+  </view>

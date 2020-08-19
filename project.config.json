@@ -1,0 +1,11 @@
+{
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true
+    },
+    "appid": "tt176261df8859b583",
+    "projectname": "DouYin"
+}
