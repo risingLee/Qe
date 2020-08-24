@@ -1,20 +1,36 @@
 <!--ttml-->
 <template name="staffName">
-  <button  bindtap="addScore"  hidden="{{!anser}}" style={{style}}>
-     {{anser}}
-  </button>
+	<view class="ttui-cell__hd">
+		<radio class="radio-Anser" bindtap="addScore" hidden="{{!anser}}" >
+			{{anser}}
+		</radio>
+	</view>
+	<view class="ttui-cell__bd">                    
+    
+  </view>
+
+
 </template>
 <view class="page-section">
-    <view class="page-section-title">
-      <text>{{quersition.title}}</text>
-    </view>
-    <view class="quersition-wrapper" style="flex-direction:column;">
-<template is="staffName" data="{{...quersition.staffA}}" ></template>
-<template is="staffName" data="{{...quersition.staffB}}" ></template>
-<template is="staffName" data="{{...quersition.staffC}}" ></template>
-<template is="staffName" data="{{...quersition.staffD}}" ></template>
-    </view>
-   <button class="btn-next"hidden="{{fs}}" bindtap="querstionChange" size="mini">{{te}}</button>
+	<view class="page-section-title">
+		<text>{{quersition.title}}</text>
+	</view>
+	<radio-group class="quersition-wrapper" style="flex-direction:column;">
+		<template is="staffName" data="{{...quersition.staffA}}"></template>
+		<template is="staffName" data="{{...quersition.staffB}}"></template>
+		<template is="staffName" data="{{...quersition.staffC}}"></template>
+		<template is="staffName" data="{{...quersition.staffD}}"></template>
+		<template is="staffName" data="{{...quersition.staffE}}"></template>
+	</radio-group>
+	<!-- <radio-group bindchange="checkboxChange">
+          <label class="ttui-cell" tt:for="{{items}}" tt:key="{{item.value}}">
+            <view class="ttui-cell__hd">
+              <radio value="{{item.value}}" checked="{{item.checked}}" />
+            </view>
+            <view class="ttui-cell__bd">{{item.name}}</view>
+          </label>
+        </radio-group> -->
+	<button class="btn-next"hidden="{{hideQuersition}}" bindtap="querstionChange" size="mini">{{te}}</button>
  
-  <button hidden="{{!fs}}" bindtap="exitFs" style="top: 100rpx;" size="mini">
+  <button class="btn-adv"hidden="{{!hideQuersition}}" bindtap="exitFs" style="top: 100rpx;" size="mini">{{te}}</button>
   </view>
