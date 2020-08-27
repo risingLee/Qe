@@ -7,245 +7,229 @@ Page({
     this.style3 = "background-color: #40a9ff"
     this.style4 = "background-color: #82a911"
     this.style5 = "background-color: #32a899"
-
+    this.tmptotalScore = 0
     this.querstions = [{
-      title: "选出不同的一项",
+      title: "1. 选出不同的一项",
       url: "",
       staffA: { anser: "蛇", score: 0, style: this.style1 },
-      staffB: { anser: "大树", score: 5, style: this.style2 },
+      staffB: { anser: "大树", score: 8, style: this.style2 },
       staffC: { anser: "老鼠", score: 0, style: this.style3 },
 
     }, {
-      title: "下列分数中找出不同类的一项",
+      title: "2. 下列分数中找出不同类的一项",
       url: "",
-      staffA: { anser: "3/5", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "3/7", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "3/9", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "3/5", score: 0, style: this.style1 },
+      staffB: { anser: "3/7", score: 0, style: this.style2 },
+      staffC: { anser: "3/9", score: 8, style: this.style3 },
     }, {
-      title: "男孩对男子，正如女孩对",
+      title: "3. 男孩对男子，正如女孩对",
       url: "",
-      staffA: { anser: "青年", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "孩子", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "夫人", score: 0, style: "background-color: #40a9ff" },
-      staffD: { anser: "姑娘", score: 0, style: "background-color: #13c2c2" },
-      staffE: { anser: "妇女", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "青年", score: 0, style: this.style1 },
+      staffB: { anser: "孩子", score: 0, style: this.style2 },
+      staffC: { anser: "夫人", score: 0, style: this.style3 },
+      staffD: { anser: "姑娘", score: 0, style: this.style4 },
+      staffE: { anser: "妇女", score: 8, style: this.style5 },
     }, {
-      title: "如果笔相对于写字，那么书相对于",
+      title: "4. 如果笔相对于写字，那么书相对于",
       url: "",
-      staffA: { anser: "娱乐", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "阅读", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "学文化", score: 0, style: "background-color: #40a9ff" },
-      staffD: { anser: "解除疲劳", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "娱乐", score: 0, style: this.style1 },
+      staffB: { anser: "阅读", score: 8, style: this.style2 },
+      staffC: { anser: "学文化", score: 0, style: this.style3 },
+      staffD: { anser: "解除疲劳", score: 0, style: this.style4 },
     }, {
-      title: "马之于马厩，正如人于",
+      title: "5. 马之于马厩，正如人于",
       url: "",
-      staffA: { anser: "牛棚", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "马车", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "房屋", score: 0, style: "background-color: #40a9ff" },
-      staffD: { anser: "农场", score: 0, style: "background-color: #40a9ff" },
-      staffE: { anser: "楼房", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "牛棚", score: 0, style: this.style1 },
+      staffB: { anser: "马车", score: 0, style: this.style2 },
+      staffC: { anser: "房屋", score: 8, style: this.style3 },
+      staffD: { anser: "农场", score: 0, style: this.style4 },
+      staffE: { anser: "楼房", score: 0, style: this.style5 },
     }, {
-      title: "2 8 14 20 () 请选出“()”处的数字",
+      title: "6. 2 8 14 20 ( ) 请选出“( )”处的数字",
       url: "",
-      staffA: { anser: "22", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "24", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "28", score: 0, style: "background-color: #40a9ff" },
-      staffD: { anser: "30", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "22", score: 0, style: this.style1 },
+      staffB: { anser: "24", score: 0, style: this.style2 },
+      staffC: { anser: "26", score: 8, style: this.style3 },
+      staffD: { anser: "28", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "7. 下列四个词是否可以组成一个正确的句子\n 生活 水里 鱼 在",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "是", score: 8, style: this.style1 },
+      staffB: { anser: "否", score: 0, style: this.style2 },
     }, {
-      title: "",
+      title: "8. 下列六个词是否可以组成一个正确的句子 球棒 的 用来 是 棒球 打",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "是", score: 0, style: this.style1 },
+      staffB: { anser: "否", score: 8, style: this.style2 },
     }, {
-      title: "",
+      title: "9. 动物学家与社会学家相对应，正如动物与( )相对",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "人类", score: 8, style: this.style1 },
+      staffB: { anser: "问题", score: 0, style: this.style2 },
+      staffC: { anser: "社会", score: 0, style: this.style3 },
+      staffD: { anser: "社会学", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "10. 如果所有的妇女都有大衣，那么漂亮的妇女会有",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "更多的大衣", score: 0, style: this.style1 },
+      staffB: { anser: "时髦的大衣", score: 0, style: this.style2 },
+      staffC: { anser: "大衣", score: 8, style: this.style3 },
+      staffD: { anser: "昂贵的大衣", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "11. 1 3 2 6 5 7 ( ) 请写出 ( )处的数字",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "9", score: 8, style: this.style1 },
+      staffB: { anser: "10", score: 0, style: this.style2 },
+      staffC: { anser: "11", score: 0, style: this.style3 },
+      staffD: { anser: "12", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "12. 南之于西北，正如西之于",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "西北", score: 0, style: this.style1 },
+      staffB: { anser: "东北", score: 8, style: this.style2 },
+      staffC: { anser: "西南", score: 0, style: this.style3 },
+      staffD: { anser: "东南", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "13. 找出不同类的一项",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "铁锅", score: 0, style: this.style1 },
+      staffB: { anser: "小勺", score: 0, style: this.style2 },
+      staffC: { anser: "米饭", score: 8, style: this.style3 },
+      staffD: { anser: "碟子", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "14. 9 7 8 6 7 5 ( ) 请写出( )处的数字",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "6", score: 8, style: this.style1 },
+      staffB: { anser: "7", score: 0, style: this.style2 },
+      staffC: { anser: "8", score: 0, style: this.style3 },
+      staffD: { anser: "9", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "15. 找出不同类的一项",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "写字台", score: 0, style: this.style1 },
+      staffB: { anser: "沙发", score: 0, style: this.style2 },
+      staffC: { anser: "电视", score: 0, style: this.style3 },
+      staffD: { anser: "桌布", score: 8, style: this.style4 },
     }, {
-      title: "",
+      title: "16. 961 (25) 432 932 ( ) 731请写出( )内的数字",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "16", score: 0, style: this.style1 },
+      staffB: { anser: "25", score: 0, style: this.style2 },
+      staffC: { anser: "38", score: 8, style: this.style3 },
+      staffD: { anser: "47", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "17. 哪一个应该填在“XOOOOXXOOOXXX”后面",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "XOO", score: 0, style: this.style1 },
+      staffB: { anser: "OO", score: 8, style: this.style2 },
+      staffC: { anser: "OOX", score: 0, style: this.style3 },
+      staffD: { anser: "OXX", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "18. 望子成龙的家长往往( )苗助长 ",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "揠", score: 8, style: this.style1 },
+      staffB: { anser: "堰", score: 0, style: this.style2 },
+      staffC: { anser: "偃", score: 0, style: this.style3 },
     }, {
-      title: "",
+      title: "19. 填上空缺的词:\n金黄的头发(黄山)刀山火海\n赞美人生( )卫国战争",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "泰山", score: 0, style: this.style1 },
+      staffB: { anser: "美国", score: 8, style: this.style2 },
+      staffC: { anser: "黄金", score: 0, style: this.style3 },
+      staffD: { anser: "火山", score: 0, style: this.style4 },
     }, {
-      title: "",
+      title: "20. 选出不同类的一项",
       url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
-    }, {
-      title: "",
-      url: "",
-      staffA: { anser: "", score: 0, style: "background-color: #73d13d" },
-      staffB: { anser: "", score: 0, style: "background-color: #13c2c2" },
-      staffC: { anser: "", score: 0, style: "background-color: #40a9ff" },
+      staffA: { anser: "地板", score: 0, style: this.style1 },
+      staffB: { anser: "壁橱", score: 0, style: this.style2 },
+      staffC: { anser: "窗户", score: 0, style: this.style3 },
+      staffD: { anser: "窗帘", score: 8, style: this.style4 },
     }];
     this.currentIndex = 0
-
-    // for (var i = 0; i < 3; i++) {
-    //   this.querstions.push(
-    //     {
-    //       title:"问题" + i,
-    //       staffA: { anser: "A"+i, score: 0, style: this.style1 },
-    //       staffB: { anser: "B"+i, score: 1, style:this.style2 },
-    //       staffC: { anser: "C"+i, score: 2,style:this.style3 },
-    //       staffD: { anser: "D"+i, score: 3,style:this.style4 }
-    //     }
-    //   );
-    // }
 
     this.setData({ quersition: this.querstions[this.currentIndex] })
 
   },
 
   data: {
+    totalScore: 0,
     te: "下一题",
+    currentNo: 1 * 5,
     hideQuersition: false,
     quersition: {}
   },
+  modalTap: function (e) {
+
+  },
   querstionChange: function (event) {
+
+
+    this.tmptotalScore += event.currentTarget.dataset.score
     this.currentIndex++
+        this.setData({currentNo:(this.currentIndex+1) * 5})
     if (this.currentIndex == this.querstions.length) {
-      this.setData({ hideQuersition: true, te: "点击视频查看得分", quersition: {} })
+      this.currentIndex = 0
+
+      var _this = this
+      const info = tt.getSystemInfoSync();
+      console.log(info.appName);
+      if (info.appName.toUpperCase() === 'DOUYIN') {
+
+        var videoAd = tt.createRewardedVideoAd({
+          adUnitId: "240k89lf988l24w8sq",
+        });
+        videoAd.show()
+          .then(() => {
+            console.log("广告显示成功");
+            tt.showModal({
+              title: "您的智商为" + this.tmptotalScore,
+              showCancel: false,
+              confirmText: "重新测试",
+
+              cancelText: '关闭',
+              success({ confirm, cancel }) {
+                if (confirm) {
+                  _this.setData({currentNo:5, quersition: _this.querstions[_this.currentIndex] })
+                }
+                if (cancel) {
+
+                }
+              }
+            })
+          })
+          .catch((err) => {
+            console.log("广告组件出现问题", err);
+            // 可以手动加载一次
+            videoAd.load().then(() => {
+              console.log("手动加载成功");
+              // 加载成功后需要再显示广告
+              return videoAd.show();
+            });
+          });
+      }
+      else{
+        tt.showModal({
+              title: "您的智商为" + this.tmptotalScore,
+              showCancel: false,
+              confirmText: "重新测试",
+
+              cancelText: '关闭',
+              success({ confirm, cancel }) {
+                if (confirm) {
+                  _this.setData({currentNo:5, quersition: _this.querstions[_this.currentIndex] })
+                }
+                if (cancel) {
+
+                }
+              }
+            })
+      }
+
+
+      this.setData({ totalScore: this.tmptotalScore, hideQuersition: true, te: "点击视频查看得分", quersition: {} })
       return;
     }
 
     this.setData({ quersition: this.querstions[this.currentIndex] })
-    console.log(this.currentIndex)
-
   },
 });

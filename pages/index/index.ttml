@@ -1,36 +1,23 @@
 <!--ttml-->
 <template name="staffName">
-	<view class="ttui-cell__hd">
-		<radio class="radio-Anser" bindtap="addScore" hidden="{{!anser}}" >
+	<button data-score="{{score}}" style="{{style}}" class="btn-Anser" bindtap="querstionChange" hidden="{{!anser}}">
 			{{anser}}
-		</radio>
-	</view>
-	<view class="ttui-cell__bd">                    
-    
-  </view>
-
-
+		</button>
 </template>
 <view class="page-section">
-	<view class="page-section-title">
+
 		<text>{{quersition.title}}</text>
-	</view>
-	<radio-group class="quersition-wrapper" style="flex-direction:column;">
-		<template is="staffName" data="{{...quersition.staffA}}"></template>
-		<template is="staffName" data="{{...quersition.staffB}}"></template>
-		<template is="staffName" data="{{...quersition.staffC}}"></template>
-		<template is="staffName" data="{{...quersition.staffD}}"></template>
-		<template is="staffName" data="{{...quersition.staffE}}"></template>
-	</radio-group>
-	<!-- <radio-group bindchange="checkboxChange">
-          <label class="ttui-cell" tt:for="{{items}}" tt:key="{{item.value}}">
-            <view class="ttui-cell__hd">
-              <radio value="{{item.value}}" checked="{{item.checked}}" />
-            </view>
-            <view class="ttui-cell__bd">{{item.name}}</view>
-          </label>
-        </radio-group> -->
-	<button class="btn-next"hidden="{{hideQuersition}}" bindtap="querstionChange" size="mini">{{te}}</button>
- 
-  <button class="btn-adv"hidden="{{!hideQuersition}}" bindtap="exitFs" style="top: 100rpx;" size="mini">{{te}}</button>
-  </view>
+
+  <template is="staffName" data="{{...quersition.staffA}}"></template>
+  <template is="staffName" data="{{...quersition.staffB}}"></template>
+  <template is="staffName" data="{{...quersition.staffC}}"></template>
+  <template is="staffName" data="{{...quersition.staffD}}"></template>
+  <template is="staffName" data="{{...quersition.staffE}}"></template>
+
+ </view>
+  <view class="progress-box">
+        <progress percent="{{currentNo}}" show-info stroke-width="20" />
+      </view>
+ <ad
+    unit-id="6kr9fprlcfj71eq67e"
+  ></ad>
