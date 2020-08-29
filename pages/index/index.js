@@ -152,6 +152,7 @@ Page({
   },
 
   data: {
+    ishidewatch: true,
     totalScore: 0,
     te: "下一题",
     currentNo: 1 * 5,
@@ -161,75 +162,78 @@ Page({
   modalTap: function (e) {
 
   },
+  watchresult: function (event) {
+    this.setData({ ishidewatch: true })
+    var _this = this
+    const info = tt.getSystemInfoSync();
+    console.log(info.appName);
+    if (info.appName.toUpperCase() === 'DOUYIN') {
+
+      var videoAd = tt.createRewardedVideoAd({
+        adUnitId: "240k89lf988l24w8sq",
+      });
+      videoAd.show()
+        .then(() => {
+          console.log("广告显示成功");
+          tt.showModal({
+            title: "您的智商为" + this.tmptotalScore,
+            showCancel: false,
+            confirmText: "重新测试",
+
+            cancelText: '关闭',
+            success({ confirm, cancel }) {
+              if (confirm) {
+                _this.setData({ currentNo: 5, quersition: _this.querstions[_this.currentIndex] })
+              }
+              if (cancel) {
+
+              }
+            }
+          })
+        })
+        .catch((err) => {
+          console.log("广告组件出现问题", err);
+          // 可以手动加载一次
+          videoAd.load().then(() => {
+            console.log("手动加载成功");
+            // 加载成功后需要再显示广告
+            return videoAd.show();
+          });
+        });
+
+    }
+    else {
+      tt.showModal({
+        title: "您的智商为" + this.tmptotalScore,
+        showCancel: false,
+        confirmText: "重新测试",
+
+        cancelText: '关闭',
+        success({ confirm, cancel }) {
+          if (confirm) {
+            _this.setData({ currentNo: 5, quersition: _this.querstions[_this.currentIndex] })
+          }
+          if (cancel) {
+
+          }
+        }
+      })
+    }
+    this.setData({ totalScore: this.tmptotalScore })
+    return;
+  },
   querstionChange: function (event) {
 
 
     this.tmptotalScore += event.currentTarget.dataset.score
     this.currentIndex++
-        this.setData({currentNo:(this.currentIndex+1) * 5})
+    this.setData({ currentNo: (this.currentIndex + 1) * 5 })
     if (this.currentIndex == this.querstions.length) {
       this.currentIndex = 0
+      this.setData({ ishidewatch: false })
 
-      var _this = this
-      const info = tt.getSystemInfoSync();
-      console.log(info.appName);
-      if (info.appName.toUpperCase() === 'DOUYIN') {
-
-        var videoAd = tt.createRewardedVideoAd({
-          adUnitId: "240k89lf988l24w8sq",
-        });
-        videoAd.show()
-          .then(() => {
-            console.log("广告显示成功");
-            tt.showModal({
-              title: "您的智商为" + this.tmptotalScore,
-              showCancel: false,
-              confirmText: "重新测试",
-
-              cancelText: '关闭',
-              success({ confirm, cancel }) {
-                if (confirm) {
-                  _this.setData({currentNo:5, quersition: _this.querstions[_this.currentIndex] })
-                }
-                if (cancel) {
-
-                }
-              }
-            })
-          })
-          .catch((err) => {
-            console.log("广告组件出现问题", err);
-            // 可以手动加载一次
-            videoAd.load().then(() => {
-              console.log("手动加载成功");
-              // 加载成功后需要再显示广告
-              return videoAd.show();
-            });
-          });
-      }
-      else{
-        tt.showModal({
-              title: "您的智商为" + this.tmptotalScore,
-              showCancel: false,
-              confirmText: "重新测试",
-
-              cancelText: '关闭',
-              success({ confirm, cancel }) {
-                if (confirm) {
-                  _this.setData({currentNo:5, quersition: _this.querstions[_this.currentIndex] })
-                }
-                if (cancel) {
-
-                }
-              }
-            })
-      }
-
-
-      this.setData({ totalScore: this.tmptotalScore, hideQuersition: true, te: "点击视频查看得分", quersition: {} })
-      return;
     }
-
-    this.setData({ quersition: this.querstions[this.currentIndex] })
+    else
+      this.setData({ quersition: this.querstions[this.currentIndex] })
   },
 });

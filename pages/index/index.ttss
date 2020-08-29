@@ -6,6 +6,19 @@
   width: 100%;
   z-index: 1000;
 }
+.btn-Watch{
+  position:absolute;
+  top:30%;
+    left: 30%;
+    right: 30%;
+}
+.text-bottom{
+  position:absolute;
+  bottom:26%;
+  left: 30%;
+
+  font-size: 12px
+}
 ad{
 
   position: absolute;
