@@ -2,6 +2,19 @@
 Page({
 
   onLoad: function () {
+
+tt.showShareMenu({
+  success(res) {
+    console.log("已成功显示转发按钮");
+  },
+  fail(err) {
+    console.log("showShareMenu 调用失败", err.errMsg);
+  },
+  complete(res) {
+    console.log("showShareMenu 调用完成");
+  },
+});
+
     this.style1 = "background-color: #73d13d"
     this.style2 = "background-color: #13c2c2"
     this.style3 = "background-color: #40a9ff"
