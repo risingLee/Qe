@@ -9,8 +9,8 @@
 .btn-Watch{
   position:absolute;
   top:30%;
-    left: 30%;
-    right: 30%;
+    left: 20%;
+    right: 20%;
 }
 .text-bottom{
   position:absolute;
