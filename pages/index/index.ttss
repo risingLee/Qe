@@ -8,17 +8,11 @@
 }
 .btn-Watch{
   position:absolute;
-  top:30%;
+  bottom:30%;
     left: 20%;
     right: 20%;
 }
-.text-bottom{
-  position:absolute;
-  bottom:26%;
-  left: 30%;
 
-  font-size: 12px
-}
 ad{
 
   position: absolute;

@@ -18,7 +18,7 @@
   <view class="progress-box">
         <progress percent="{{currentNo}}" show-info stroke-width="20" />
       </view>
-      <text class="text-bottom">---本小程序仅供娱乐---</text>
+
       <button class="btn-Watch" bindtap="watchresult" hidden="{{ishidewatch}}">
 		看视频查看结果
 		</button>

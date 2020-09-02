@@ -1,0 +1,26 @@
+.bg-img
+{
+  position: absolute;
+  top: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  height: 5%;
+}
+.start
+{
+   position: absolute;
+   top:40%;
+    margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
+.bg-bottom{
+  position:absolute;
+  bottom:26%;
+  left: 30%;
+  height: 2%;
+  width: 40%;
+  right: 30%;
+  font-size: 12px
+}

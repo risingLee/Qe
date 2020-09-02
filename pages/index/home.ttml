@@ -1,0 +1,3 @@
+<image class="bg-img" src="../image/title.png" ></image>
+<button class="start" bindtap="startquest"> 开始免费测试 </button>
+<image class="bg-bottom" src="../image/bottom.png"></image>

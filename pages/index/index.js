@@ -2,18 +2,18 @@
 Page({
 
   onLoad: function () {
-
-tt.showShareMenu({
-  success(res) {
-    console.log("已成功显示转发按钮");
-  },
-  fail(err) {
-    console.log("showShareMenu 调用失败", err.errMsg);
-  },
-  complete(res) {
-    console.log("showShareMenu 调用完成");
-  },
-});
+    this.showCount = 0;
+    tt.showShareMenu({
+      success(res) {
+        console.log("已成功显示转发按钮");
+      },
+      fail(err) {
+        console.log("showShareMenu 调用失败", err.errMsg);
+      },
+      complete(res) {
+        console.log("showShareMenu 调用完成");
+      },
+    });
 
     this.style1 = "background-color: #73d13d"
     this.style2 = "background-color: #13c2c2"
@@ -178,34 +178,71 @@ tt.showShareMenu({
   watchresult: function (event) {
     this.setData({ ishidewatch: true })
     var _this = this
+    _this.showCount = 0;
     const info = tt.getSystemInfoSync();
-    console.log(info.appName);
     if (info.appName.toUpperCase() === 'DOUYIN') {
-
+      tt.showLoading({
+        title: "loading...",
+        success(res) {
+          console.log(`${res}`);
+        },
+        fail(res) {
+          console.log(`showLoading调用失败`);
+        },
+      });
       var videoAd = tt.createRewardedVideoAd({
         adUnitId: "240k89lf988l24w8sq",
+      });
+      videoAd.onClose((res) => {
+        if (res.isEnded) {
+          if (_this.showCount == 0) {
+
+            tt.showModal({
+              title: "您的智商为" + this.tmptotalScore,
+              content: "恭喜您成功碾压了全国 " + (this.tmptotalScore > 100 ? "99%" : this.tmptotalScore > 80 && this.tmptotalScore < 100 ? "90%" : "30%") + " 的用户",
+              showCancel: false,
+              confirmText: "重新测试",
+              cancelText: '关闭',
+              success({ confirm, cancel }) {
+                if (confirm) {
+                  _this.currentIndex = 0;
+                  _this.setData({ currentNo: 5, quersition: _this.querstions[_this.currentIndex] })
+                }
+                if (cancel) {
+
+                }
+              }
+            })
+            _this.showCount = 1;
+          }
+        }
+        else {
+          this.setData({ ishidewatch: false })
+
+        }
       });
       videoAd.show()
         .then(() => {
           console.log("广告显示成功");
-          tt.showModal({
-            title: "您的智商为" + this.tmptotalScore,
-            showCancel: false,
-            confirmText: "重新测试",
-
-            cancelText: '关闭',
-            success({ confirm, cancel }) {
-              if (confirm) {
-                _this.setData({ currentNo: 5, quersition: _this.querstions[_this.currentIndex] })
-              }
-              if (cancel) {
-
-              }
-            }
-          })
+          tt.hideLoading({
+            success(res) {
+              console.log(res);
+            },
+            fail(err) {
+              console.log(`hideLoading 调用失败`, err);
+            },
+          });
         })
         .catch((err) => {
           console.log("广告组件出现问题", err);
+          tt.hideLoading({
+            success(res) {
+              console.log(res);
+            },
+            fail(err) {
+              console.log(`hideLoading 调用失败`, err);
+            },
+          });
           // 可以手动加载一次
           videoAd.load().then(() => {
             console.log("手动加载成功");
@@ -218,12 +255,15 @@ tt.showShareMenu({
     else {
       tt.showModal({
         title: "您的智商为" + this.tmptotalScore,
+        content: "恭喜您成功碾压了全国 " + (this.tmptotalScore > 100 ? "99%" : this.tmptotalScore > 80 && this.tmptotalScore < 100 ? "90%" : "30%") + " 的用户",
+
         showCancel: false,
-        confirmText: "重新测试",
+        confirmText: "再测一次",
 
         cancelText: '关闭',
         success({ confirm, cancel }) {
           if (confirm) {
+            _this.currentIndex = 0
             _this.setData({ currentNo: 5, quersition: _this.querstions[_this.currentIndex] })
           }
           if (cancel) {
@@ -236,17 +276,14 @@ tt.showShareMenu({
     return;
   },
   querstionChange: function (event) {
-
-
     this.tmptotalScore += event.currentTarget.dataset.score
-    this.currentIndex++
     this.setData({ currentNo: (this.currentIndex + 1) * 5 })
-    if (this.currentIndex == this.querstions.length) {
-      this.currentIndex = 0
+    if (this.currentIndex == this.querstions.length - 1) {
       this.setData({ ishidewatch: false })
-
     }
-    else
+    else {
+      this.currentIndex++
       this.setData({ quersition: this.querstions[this.currentIndex] })
+    }
   },
 });
