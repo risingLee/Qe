@@ -4,7 +4,17 @@ Page({
 
   },
   onLoad: function (options) {
-
+    tt.showShareMenu({
+      success(res) {
+        console.log("已成功显示转发按钮");
+      },
+      fail(err) {
+        console.log("showShareMenu 调用失败", err.errMsg);
+      },
+      complete(res) {
+        console.log("showShareMenu 调用完成");
+      },
+    });
   },
   startquest: function (event) {
     tt.showLoading({
